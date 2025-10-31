@@ -8,6 +8,11 @@ services:
       - "27017:27017"
     environment:
       - MONGO_INITDB_DATABASE=smart-task-manager
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   auth-service:
     build:
@@ -18,7 +23,7 @@ services:
     environment:
       - MONGODB_URI=mongodb://mongo:27017/smart-task-manager
       - PORT=8000
-      - JWT_SECRET=your-secret-key
+      - JWT_SECRET=1hI61TqE+OOtJ22vL5UaANaj6vfMaf3H6UD8SV51hg0=
     depends_on:
       - mongo
     ports:
