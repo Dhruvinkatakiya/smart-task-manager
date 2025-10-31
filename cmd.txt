@@ -1,0 +1,129 @@
+# Ensure you are at repo root
+pwd
+
+# Check required CLIs
+docker --version
+kubectl version --client --short
+minikube version
+terraform version
+git --version
+# optional but useful
+gh --version   # GitHub CLI (optional)
+trivy --version  # Trivy scanner (optional)
+ngrok version  # if installed locally
+
+cd infra/terraform
+
+# Initialize provider plugins
+terraform init -input=false
+
+# Show what would be created (dry-run)
+terraform plan -out=tfplan
+
+# Optional: inspect planned resources
+terraform show -json tfplan | jq '.planned_values.root_module.resources[] | {type,name}'  # requires jq
+
+# If already applied previously, list state
+terraform state list
+
+# Show outputs (if applied)
+terraform output
+
+
+terraform apply tfplan   # or terraform apply -auto-approve if non-interactive
+
+
+
+# Check minikube status and Kubernetes nodes
+minikube status
+kubectl get nodes -o wide
+
+# Check API connectivity
+kubectl cluster-info
+
+
+
+# All resources in namespace
+kubectl get all -n default
+
+# More focused checks
+kubectl get deployments -n default
+kubectl get replicasets -n default
+kubectl get pods -n default
+kubectl get svc -n default
+kubectl get ingress -n default
+
+# Describe a resource for details / events
+kubectl describe deployment auth-deployment -n default
+kubectl describe pod <pod-name> -n default
+kubectl describe svc frontend-service -n default
+kubectl describe ingress smart-ingress -n default
+
+
+
+kubectl get configmap -n default
+kubectl describe configmap mongo-config -n default
+
+kubectl get secret -n default
+# To view decoded secret value (careful; don't leak secrets in logs)
+kubectl get secret smart-secrets -n default -o yaml
+# decode a specific key (example JWT_SECRET)
+kubectl get secret smart-secrets -n default -o jsonpath='{.data.JWT_SECRET}' | base64 --decode && echo
+
+
+
+# Show ingress rules and address
+kubectl get ingress -n default
+kubectl describe ingress smart-ingress -n default
+
+# Test routing (if Ingress exposed to host)
+# Replace HOST with your ingress host or minikube IP; on Minikube, after tunnel or LoadBalancer you can use curl
+curl -v http://localhost/            # should serve frontend index or redirect to / (depends on config)
+curl -v http://localhost/api/auth/health  # if you have a health endpoint
+
+# If using minikube tunnel and Ingress external IP assigned, use that IP or hostname
+kubectl get svc -n ingress-nginx
+
+
+
+minikube tunnel
+# You may need sudo on macOS/linux
+
+
+
+# Frontend
+kubectl port-forward svc/frontend-service 3000:3000 -n default &
+
+# Auth
+kubectl port-forward svc/auth-service 8000:80 -n default &
+
+# Task
+kubectl port-forward svc/task-service 5001:80 -n default &
+
+# Board
+kubectl port-forward svc/board-service 8002:80 -n default &
+
+# Mongo
+kubectl port-forward svc/mongo 27018:27017 -n default &
+
+
+# List images
+docker images | grep -E 'auth-service|task-service|board-service|frontend'
+
+# If using minikube image load, verify images exist inside minikube
+minikube image list
+
+
+# Scan an image you built
+trivy image --severity CRITICAL,HIGH auth-service:latest
+
+
+
+# See recent events (helps diagnose scheduling/startup issues)
+kubectl get events -n default --sort-by='.lastTimestamp' | tail -n 50
+
+# Check ingress controller logs
+kubectl logs -n ingress-nginx -l app.kubernetes.io/name=ingress-nginx --tail=200
+
+# Describe node if scheduling issues
+kubectl describe node $(kubectl get nodes -o jsonpath='{.items[0].metadata.name}') | less

@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+
+# Environment files
+.env
+.env.*
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+README.md
+*.md
+CHANGELOG.md
+
+# CI/CD
+.github/
+
+# Testing
+coverage/
+.nyc_output/
+*.test.js
+*.spec.js
+
+# Development
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts not needed in image
+dist/
+build/

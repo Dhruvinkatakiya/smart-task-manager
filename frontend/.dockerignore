@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+
+# Environment files
+.env
+.env.*
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+README.md
+*.md
+
+# CI/CD
+.github/
+
+# Testing
+coverage/
+src/**/*.test.js
+src/**/*.spec.js
+
+# Development
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Note: Do NOT exclude `src/` or `public/` here because the Docker multi-stage
+# build copies the source into the build stage and `react-scripts build`
+# requires `public/index.html` to exist in the build context.
+# We still exclude the final `build/` output which shouldn't be in the context.
+build/
