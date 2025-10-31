@@ -1,20 +1,13 @@
-<div align="center">
-
 # 🚀 Smart Task Manager
 
-[![CI/CD](https://github.com/PujanMevawala/smart-task-manager/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/PujanMevawala/smart-task-manager/actions)
-[![Docker](https://img.shields.io/badge/Docker-Multi--stage-2496ED?logo=docker&logoColor=white)](https://www.docker.com/)
-[![Kubernetes](https://img.shields.io/badge/Kubernetes-Ready-326CE5?logo=kubernetes&logoColor=white)](https://kubernetes.io/)
-[![Terraform](https://img.shields.io/badge/IaC-Terraform-7B42BC?logo=terraform&logoColor=white)](https://www.terraform.io/)
 [![React](https://img.shields.io/badge/React-18.2.0-61DAFB?logo=react&logoColor=black)](https://reactjs.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-18.x-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-6.0-47A248?logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![Docker](https://img.shields.io/badge/Docker-Multi--stage-2496ED?logo=docker&logoColor=white)](https://www.docker.com/)
 
-**A production-ready, full-stack task management application with modern microservices architecture, containerization, and automated DevOps pipeline.**
+A modern task management application built with microservices architecture, featuring real-time updates, team collaboration, and a responsive interface.
 
-[Live Demo](https://ulrike-comfier-precontemporaneously.ngrok-free.dev) • [Documentation](#-documentation) • [Quick Start](#-quick-start)
-
-</div>
+[Documentation](#-documentation) • [Quick Start](#-quick-start)
 
 ---
 
@@ -298,7 +291,7 @@
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/PujanMevawala/smart-task-manager.git
+git clone https://github.com/Dhruvinkatakiya/smart-task-manager.git
 cd smart-task-manager
 
 # 2. Start Minikube cluster
@@ -846,9 +839,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <div align="center">
 
-**Made with ❤️ for Modern DevOps**
+**Made with ❤️ by Dhruvin Katakiya**
 
-[⭐ Star this repository](https://github.com/PujanMevawala/smart-task-manager) • [🐛 Report Bug](https://github.com/PujanMevawala/smart-task-manager/issues) • [📖 Documentation](DEPLOYMENT_EVALUATION_REPORT.md)
+[⭐ Star this repository](https://github.com/Dhruvinkatakiya/smart-task-manager) • [🐛 Report Bug](https://github.com/Dhruvinkatakiya/smart-task-manager/issues) • [📖 Documentation](DEPLOYMENT_EVALUATION_REPORT.md)
 
 </div>
 
@@ -860,10 +853,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👨‍💻 Author
 
-**Pujan Mevawala**
+**Dhruvin Katakiya**
 
-- GitHub: [@PujanMevawala](https://github.com/PujanMevawala)
-- Repository: [smart-task-manager](https://github.com/PujanMevawala/smart-task-manager)
+- GitHub: [@Dhruvinkatakiya](https://github.com/Dhruvinkatakiya)
+- Repository: [smart-task-manager](https://github.com/Dhruvinkatakiya/smart-task-manager)
 
 ---
 
@@ -900,7 +893,7 @@ See [DEPLOYMENT_EVALUATION_REPORT.md](DEPLOYMENT_EVALUATION_REPORT.md) for detai
 
 <div align="center">
 
-**Made with by Pujan Mevawala**
+**Made with ❤️ by Dhruvin Katakiya**
 
 **Star this repository if you found it helpful!**
 
